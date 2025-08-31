@@ -1,19 +1,26 @@
 import { Construct } from "constructs";
 import * as apigatewayv2 from "aws-cdk-lib/aws-apigatewayv2";
-import * as apigatewayv2Integrations from "aws-cdk-lib/aws-apigatewayv2-integrations";
-import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
 import { DatabaseConstruct } from "./database.js";
 interface ApiConstructProps {
-  database: dynamodb.Table;
+  database: DatabaseConstruct;
 }
 
 export class ApiConstruct extends Construct {
   public readonly api: apigatewayv2.HttpApi;
+  public readonly url: string;
+  public readonly database: DatabaseConstruct;
 
   constructor(scope: Construct, id: string, props: ApiConstructProps) {
     super(scope, id);
-    this.api = new apigatewayv2.HttpApi(this,"CrudApi",{
-      database = new DatabaseConstruct();
-    })
+    this.database = props.database;
+    this.api = new apigatewayv2.HttpApi(this, "CrudApi", {
+      apiName: "user-crud-api",
+      corsPreflight: {
+        allowOrigins: ["*"],
+        allowMethods: [apigatewayv2.CorsHttpMethod.ANY],
+        allowHeaders: ["*"],
+      },
+    });
+    this.url = this.api.url || "URL not available";
   }
 }
