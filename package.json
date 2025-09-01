@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config jest.config.ts"
+    "test": "jest --config jest.config.ts",
+    "build": "tsc",
+    "cdk:synth": "cdk synth",
+    "cdk:deploy": "cdk deploy",
+    "cdk:destroy": "cdk destroy",
+    "cdk:diff": "cdk diff"
   },
   "keywords": [],
   "author": "",
