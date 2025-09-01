@@ -7,8 +7,8 @@ import { ApiConstruct } from "../constructs/api.js";
 import * as cdk from "aws-cdk-lib";
 
 export class CrudStack extends Stack {
-  constructor(scope: Construct, id: string, props: StackProps) {
-    super(scope, id);
+  constructor(scope: Construct, id: string, props?: StackProps) {
+    super(scope, id, props);
     const database = new DatabaseConstruct(this, "Database", {
       tableName: "users-table",
       partitionKey: "id",
