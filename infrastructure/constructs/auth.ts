@@ -12,7 +12,7 @@ export class CognitoConstruct extends Construct {
   constructor(scope: Construct, id: string, props: CognitoConstructProps) {
     super(scope, id);
     this.userPool = new cognito.UserPool(this, "userPool", {
-      userPoolName: props.userPoolName || "user-crud-pool",
+      userPoolName: props.userPoolName,
       signInAliases: {
         email: true,
         username: true,
