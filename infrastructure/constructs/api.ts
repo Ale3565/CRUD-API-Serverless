@@ -1,23 +1,23 @@
 import { Construct } from "constructs";
-import * as apigatewayv2 from "aws-cdk-lib/aws-apigatewayv2";
+import * as apigwv2 from "aws-cdk-lib/aws-apigatewayv2";
 import { DatabaseConstruct } from "./database.js";
 interface ApiConstructProps {
   database: DatabaseConstruct;
 }
 
 export class ApiConstruct extends Construct {
-  public readonly api: apigatewayv2.HttpApi;
+  public readonly api: apigwv2.HttpApi;
   public readonly url: string;
   public readonly database: DatabaseConstruct;
 
   constructor(scope: Construct, id: string, props: ApiConstructProps) {
     super(scope, id);
     this.database = props.database;
-    this.api = new apigatewayv2.HttpApi(this, "CrudApi", {
+    this.api = new apigwv2.HttpApi(this, "CrudApi", {
       apiName: "user-crud-api",
       corsPreflight: {
         allowOrigins: ["*"],
-        allowMethods: [apigatewayv2.CorsHttpMethod.ANY],
+        allowMethods: [apigwv2.CorsHttpMethod.ANY],
         allowHeaders: ["*"],
       },
     });
