@@ -1,8 +1,4 @@
-export interface UpdateExpressionBuilder {
-  updateExpression: string;
-  expressionAttributeNames: Record<string, string>;
-  expressionAttributeValues: Record<string, any>;
-}
+import { UpdateExpressionBuilder } from "../types/index.js";
 
 export const buildUpdateExpression = (
   updates: Record<string, any>,

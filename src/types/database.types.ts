@@ -18,3 +18,9 @@ export interface PaginatedResponse<T> {
   lastEvaluatedKey?: any;
   hasMore: boolean;
 }
+
+export interface UpdateExpressionBuilder {
+  updateExpression: string;
+  expressionAttributeNames: Record<string, string>;
+  expressionAttributeValues: Record<string, any>;
+}
