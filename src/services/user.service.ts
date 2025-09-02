@@ -131,7 +131,7 @@ export class UserService {
     } catch (error) {
       logger.error("Error creating user:", error);
 
-      if (error.name === "ConditionalCheckFailedException") {
+      if (error instanceof Error && error.name === "ConditionalCheckFailedException") {
         throw new Error("User ID already exists");
       }
 
@@ -195,7 +195,7 @@ export class UserService {
     } catch (error) {
       logger.error("Error updating user:", error);
 
-      if (error.name === "ConditionalCheckFailedException") {
+      if (error instanceof Error && error.name === "ConditionalCheckFailedException") {
         throw new Error("User not found");
       }
 
@@ -229,7 +229,7 @@ export class UserService {
     } catch (error) {
       logger.error("Error deleting user:", error);
 
-      if (error.name === "ConditionalCheckFailedException") {
+      if (error instanceof Error && error.name === "ConditionalCheckFailedException") {
         throw new Error("User not found");
       }
 

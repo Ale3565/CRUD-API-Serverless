@@ -15,8 +15,8 @@ export class LambdaConstructor extends Construct {
     this.table = props.table;
     this.lambdaFunction = new lambda.Function(this, "UserLambda", {
       runtime: lambda.Runtime.NODEJS_22_X,
-      handler: "crud-handler.handler",
-      code: lambda.Code.fromAsset(path.join(__dirname, "../../src/handlers")),
+      handler: "handlers/crud-handler.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "../../dist")),
       environment: {
         TABLE_NAME: this.table.tableName,
         NODE_OPTIONS: "--enable-source-maps",

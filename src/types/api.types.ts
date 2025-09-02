@@ -1,11 +1,7 @@
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
-export interface ApiGatewayEvent extends APIGatewayProxyEventV2 {
-  requestContext: {
-    http: {
-      method: string;
-      path: string;
-    };
+export interface ApiGatewayEvent extends Omit<APIGatewayProxyEventV2, 'requestContext'> {
+  requestContext: APIGatewayProxyEventV2['requestContext'] & {
     authorizer?: {
       jwt?: {
         claims: {
@@ -16,11 +12,6 @@ export interface ApiGatewayEvent extends APIGatewayProxyEventV2 {
       };
     };
   };
-  pathParameters?: {
-    id?: string;
-    [key: string]: string | undefined;
-  } | null;
-  body?: string | null;
 }
 
 export interface ApiResponse {

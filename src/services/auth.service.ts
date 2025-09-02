@@ -2,7 +2,7 @@ import {
   CognitoIdentityProviderClient,
   GetUserCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
-import { CognitoUser } from "../types/indexjs";
+import { CognitoUser } from "../types/index.js";
 import { logger } from "../utils/index.js";
 
 export class AuthService {

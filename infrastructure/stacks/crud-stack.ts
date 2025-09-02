@@ -26,7 +26,7 @@ export class CrudStack extends Stack {
     const api = new ApiConstruct(this, "Api", {
       database: database,
       lambda: lambda,
-      auth: auth, // ← NUEVO: Pasa también auth
+      auth: auth, // 
     });
 
     new cdk.CfnOutput(this, "ApiUrl", {
