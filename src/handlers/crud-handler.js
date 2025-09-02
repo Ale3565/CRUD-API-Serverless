@@ -152,8 +152,8 @@ const updateUser = async (id, userData) => {
    
     if (userData.name !== undefined || userData.email !== undefined) {
       const validationErrors = validateUser({
-        name: userData.name || 'dummy', 
-        email: userData.email || 'dummy@example.com' 
+        name: userData.name || 'user', 
+        email: userData.email || 'user@example.com' 
       });
       
       if (userData.name !== undefined && !userData.name?.trim()) {
