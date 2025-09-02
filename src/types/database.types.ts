@@ -7,17 +7,9 @@ export interface DynamoDBUser {
   address?: string;
   createdAt: string;
   updatedAt: string;
-
   createdBy?: string;
   updatedBy?: string;
   version?: number;
-}
-
-export interface QueryOptions {
-  limit?: number;
-  lastEvaluatedKey?: any;
-  filterExpression?: string;
-  expressionAttributeValues?: { [key: string]: any };
 }
 
 export interface PaginatedResponse<T> {

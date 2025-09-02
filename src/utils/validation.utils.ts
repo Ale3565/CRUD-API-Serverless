@@ -1,8 +1,4 @@
-import {
-  CreateUserRequest,
-  UpdateUserRequest,
-  ValidationError,
-} from "../types/index.js";
+import { CreateUserRequest, UpdateUserRequest } from "../types/index.js";
 
 export const validateEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

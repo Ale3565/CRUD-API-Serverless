@@ -1,5 +1,3 @@
-import { UpdateCommand } from "@aws-sdk/lib-dynamodb";
-
 export interface UpdateExpressionBuilder {
   updateExpression: string;
   expressionAttributeNames: Record<string, string>;

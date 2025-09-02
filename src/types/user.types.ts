@@ -31,15 +31,3 @@ export interface UserResponse {
   users?: User[];
   count?: number;
 }
-
-export interface ValidationError {
-  field: string;
-  message: string;
-}
-
-export interface ApiErrorResponse {
-  message: string;
-  error?: string;
-  errors?: string[];
-  statusCode: number;
-}
