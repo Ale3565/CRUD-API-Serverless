@@ -5,6 +5,7 @@ import { LambdaConstructor } from "./lambda.js";
 import { CognitoConstruct } from "./auth.js";
 import { HttpLambdaIntegration } from "aws-cdk-lib/aws-apigatewayv2-integrations";
 import { HttpJwtAuthorizer } from "aws-cdk-lib/aws-apigatewayv2-authorizers";
+import { Stack } from "aws-cdk-lib";
 
 interface ApiConstructProps {
   database: DatabaseConstruct;
@@ -30,7 +31,9 @@ export class ApiConstruct extends Construct {
 
     this.authorizer = new HttpJwtAuthorizer(
       "CognitoAuthorizer",
-      `https://cognito-idp.${this.node.scope?.region}.amazonaws.com/${props.auth.userPool.userPoolId}`,
+      `https://cognito-idp.${Stack.of(this).region}.amazonaws.com/${
+        props.auth.userPool.userPoolId
+      }`,
       {
         jwtAudience: [props.auth.userPoolClient.userPoolClientId],
       }
