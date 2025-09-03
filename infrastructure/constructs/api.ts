@@ -18,7 +18,7 @@ export class ApiConstruct extends Construct {
   public readonly url: string;
   public readonly database: DatabaseConstruct;
   public readonly userIntegration: HttpLambdaIntegration;
-  public readonly authorizer: HttpJwtAuthorizer; // ← NUEVO
+  public readonly authorizer: HttpJwtAuthorizer;
 
   constructor(scope: Construct, id: string, props: ApiConstructProps) {
     super(scope, id);
